@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TSChecker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AODRId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">37530159341115681</Value>
+    </Setting>
+    <Setting Name="AODCId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">37530159341130061</Value>
+    </Setting>
+    <Setting Name="AODSId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">37530159341133378</Value>
+    </Setting>
+    <Setting Name="DaybreakURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">census.daybreakgames.com</Value>
+    </Setting>
+    <Setting Name="DaybreakResponseFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xml</Value>
+    </Setting>
+    <Setting Name="DaybreakPlanetsideQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ps2:v2</Value>
+    </Setting>
+    <Setting Name="DriveClientId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">317508044186-0crsurmrj4123blcb2jturlgnj7rnjs8.apps.googleusercontent.com</Value>
+    </Setting>
+    <Setting Name="DriveClientSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CR9qK9rXaB8bxizV1MBN_WAh</Value>
+    </Setting>
+    <Setting Name="DriveFileId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0B8G9vu6N0EcCR3hfYTNWQW9SNDA</Value>
+    </Setting>
+    <Setting Name="AOD_Divisions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Planetside 2,AOD Racing,ARK,Armored Warfare,Battlefield,Battlefront,Black Desert,Jedi Knight,Overwatch,Skyforge,Tom Clancy,Warframe,War Thunder,World of Warcraft</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,5 @@
+C:\Users\Tom\documents\visual studio 2015\Projects\TSChecker\Common\bin\Release\Common.dll
+C:\Users\Tom\documents\visual studio 2015\Projects\TSChecker\Common\bin\Release\Common.pdb
+C:\Users\Tom\documents\visual studio 2015\Projects\TSChecker\Common\obj\Release\Common.dll
+C:\Users\Tom\documents\visual studio 2015\Projects\TSChecker\Common\obj\Release\Common.pdb
+C:\Users\Tom\documents\visual studio 2015\Projects\TSChecker\Common\obj\Release\Common.csprojResolveAssemblyReference.cache

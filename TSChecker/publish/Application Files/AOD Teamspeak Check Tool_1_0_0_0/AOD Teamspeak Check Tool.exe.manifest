@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="AOD Teamspeak Check Tool.exe" version="1.0.0.0" publicKeyToken="e2c7446fa0938b55" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="AOD Teamspeak Check Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="AOD Teamspeak Check Tool.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AOD Teamspeak Check Tool.exe" size="65952">
+      <assemblyIdentity name="AOD Teamspeak Check Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8vKJ6WordUtaWTw1qO+HKmNGVVM6lj2fvGBFECxf2xQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="13824">
+      <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>IXHNbij2EvK1Ix126BqCvcv64bkSNQywaIM6Ant63uM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.dll" size="67584">
+      <assemblyIdentity name="Google.Apis" version="1.21.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Yn/utIzUGbw9mHIAmiTjUTAbaZ8S3qhpDoiHGSpAXlY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.dll" size="56832">
+      <assemblyIdentity name="Google.Apis.Auth" version="1.21.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>A3AEfRYpeW5GZIv8P3QM4RmwD5ti9yAB1OFPzzda3J0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.PlatformServices.dll" size="33280">
+      <assemblyIdentity name="Google.Apis.Auth.PlatformServices" version="1.21.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>SNhX0MdC71/XwbHAihGxlIue9kkA1i+1f0EYAX9UE8I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Core.dll" size="49664">
+      <assemblyIdentity name="Google.Apis.Core" version="1.21.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>WRiTahXDuBVKDFQU3H6jgkYHE/vRgGiluRWvWXJmlqk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Drive.v3.dll" size="79360">
+      <assemblyIdentity name="Google.Apis.Drive.v3" version="1.21.0.768" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6BKOxIyO4T/8YiI5jmWLte4p2rgpClyRng3PbR/LMI0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.PlatformServices.dll" size="6656">
+      <assemblyIdentity name="Google.Apis.PlatformServices" version="1.21.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DePz+gA5rCguX1IUC2eGNi87ty1D16BwSkcWLdb8Dcw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="275968">
+      <assemblyIdentity name="log4net" version="2.0.7.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>MTGPui3BO0Bk/sfO6j8TcEXlNU3MaXOmUZ2Uvm2QH+4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="520192">
+      <assemblyIdentity name="Newtonsoft.Json" version="7.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nsosXtGHteExnDWaq/g4KZITHv4YVLiZwjqT/iJ0luM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Zlib.Portable.dll" size="81920">
+      <assemblyIdentity name="Zlib.Portable" version="1.11.0.0" publicKeyToken="431CBA815F6A8B5B" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>EhdRwdjYy8UnDApgbbyl1xTULhirPmtXf7uNKkpVacU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="AOD Teamspeak Check Tool.exe.config" size="2662">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>v56usHxRbmeL5ymGh1Q6tEfOMRYW57sZF7S6vz0pVMI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="favicon.ico" size="1150">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>hLXcTeOYvofVTN6u1k0uFqgev3NgkXU07k0zrL8SZOo=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=TomsPC\Tom" issuerKeyHash="7192604ea95ac2119a522025a067e6769dba9a3e" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>INb5cjydbu3+4NqvMKXDolAFU972c9ujr6t4EUT8tn0=</DigestValue></Reference></SignedInfo><SignatureValue>K/sk45Z3inlfVmvLMTU1aME8hIVtyt6aR9ujpcryaBfUnYzsP2eTLodB6FX4y+kis8zrm5IccOUUDxR75/Br+ifbtD0QKi2FsdC5YpO5NE7oDyLfcfcDm5APkHab9/e6b1qI+45sJDlrpqcxGIW81lNGU0Ogjv1jJAHjXz3jyMI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>m5ViQOTCGog6svY9XXGYxTnYN3xe/8FL2tUC1yhnP/w0i4QBZgTSPgQae1BrDQh9ahPrRj+MI31dayYL91cr6bq2i97jZg9K/cwAFF/Odb4pck2GlG8+PlCtSk0v8Nz6W1fUNkTJXo0ftHjVI7QHXnUv9YKptuBTHHIlkzmmwuc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="7db6fc441178abafa3db73f6de530550a2c3a530afdae0feed6e9d3c72f9d620" Description="" Url=""><as:assemblyIdentity name="AOD Teamspeak Check Tool.exe" version="1.0.0.0" publicKeyToken="e2c7446fa0938b55" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=TomsPC\Tom</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>BHOm2hVIJ4qKisedClQMAru7ElYfnjesQxCUB6adlYw=</DigestValue></Reference></SignedInfo><SignatureValue>D0hcJmZF/oQD4mvBXzSZG438LPNv4cZDlpRlIwuOlBp2hPpxZWdTtaM4ZxKhOvxjelAAOKTGaYzRCKTEXQjxZbZWlbcoyvD3P6LNujSKdZ3gwWOOcedLT8OJ9P3iE5sX8O8isswGHFv4nbFoyG1tpTJLgXFbuBRRurL+aVd6NBU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>m5ViQOTCGog6svY9XXGYxTnYN3xe/8FL2tUC1yhnP/w0i4QBZgTSPgQae1BrDQh9ahPrRj+MI31dayYL91cr6bq2i97jZg9K/cwAFF/Odb4pck2GlG8+PlCtSk0v8Nz6W1fUNkTJXo0ftHjVI7QHXnUv9YKptuBTHHIlkzmmwuc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBwTCCASqgAwIBAgIQUd7ew6VAGbxMpQkzRLQq+DANBgkqhkiG9w0BAQsFADAfMR0wGwYDVQQDHhQAVABvAG0AcwBQAEMAXABUAG8AbTAeFw0xNzAyMjQwMzEzNTNaFw0xODAyMjQwOTEzNTNaMB8xHTAbBgNVBAMeFABUAG8AbQBzAFAAQwBcAFQAbwBtMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCblWJA5MIaiDqy9j1dcZjFOdg3fF7/wUva1QLXKGc//DSLhAFmBNI+BBp7UGsNCH1qE+tGP4wjfV1rJgv3VyvpuraL3uNmD0r9zAAUX851vilyTYaUbz4+UK1KTS/w3PpbV9Q2RMlejR+0eNUjtAdedS/1gqm24FMcciWTOabC5wIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAC3zCYmSTabKWbMK4WO+MmUbEHakDyTc1v3xNZmhhyjNmnPBwog/7aabnqYEfwUXwNETnaYet/IHhcTpW8F6sls17I/gwSX3KrMuSDhuPd7F5QsXjaNr9r+qIGkEA3aekLL85UR/c820sXxo69clobuWpbZCZX5+Se5OHcWaeZxl</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
