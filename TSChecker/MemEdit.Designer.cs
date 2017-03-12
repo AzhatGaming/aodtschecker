@@ -42,6 +42,7 @@
             this.addCharTextbox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.charDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.divImgCol = new System.Windows.Forms.DataGridViewImageColumn();
             this.charNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,12 +217,19 @@
             this.charDataGridView.TabIndex = 10;
             this.charDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.charDataGridView_CellContentClick);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::TSChecker.Properties.Resources.terran_republic_logo_vector_by_westy543_d5xkdzh;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 22;
+            // 
             // divImgCol
             // 
             this.divImgCol.HeaderText = "";
-            this.divImgCol.Image = global::TSChecker.Properties.Resources.terran_republic_logo_vector_by_westy543_d5xkdzh;
-            this.divImgCol.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.divImgCol.Name = "divImgCol";
+            this.divImgCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.divImgCol.Width = 22;
             // 
             // charNameCol
@@ -298,5 +306,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn brCol;
         private System.Windows.Forms.DataGridViewLinkColumn psuLinkCol;
         private System.Windows.Forms.DataGridViewButtonColumn delCol;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Common.AOD;
 
 namespace Common
 {
@@ -24,35 +25,6 @@ namespace Common
         public static string GetLocalFilePath()
         {
             return string.Format(@"{0}{1}", Path.GetTempPath(), localFileName);
-        }
-
-        public static string GetRankAbbrv(string fullRank)
-        {
-            switch (fullRank)
-            {
-                case "cadet":
-                    return "cdt";
-                case "private":
-                    return "pvt";
-                case "private first class":
-                    return "pfc";
-                case "specialist":
-                    return "spec";
-                case "lance corporal":
-                    return "lcpl";
-                case "corporal":
-                    return "cpl";
-                case "sergeant":
-                    return "sgt";
-                case "staff sergeant":
-                    return "ssgt";
-                case "master sergeant":
-                    return "msgt";
-                case "first sergeant":
-                    return "1sgt";
-                default:
-                    return "rct";
-            }
         }
 
         public static void LogMessage(string msg)

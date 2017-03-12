@@ -121,6 +121,7 @@ namespace TSChecker
             imgList.Images.Add(TSChecker.Properties.Resources.offline);
             imgList.Images.Add(TSChecker.Properties.Resources.online);
             imgList.Images.Add(TSChecker.Properties.Resources.error);
+            imgList.Images.Add(TSChecker.Properties.Resources.offline_roster);
 
             ingamelist.SmallImageList = imgList;
             ingamelist.View = View.Details;
@@ -144,123 +145,20 @@ namespace TSChecker
 
         private async void ingamelist_Populate()
         {
-            try
-            {
-                Program.userInfo = await GoogleDriveTool.GetUserInformationFromDrive();
-            }
-            catch (Exception ex)
-            {
-                this.ingamelist.Items.Clear();
-                string errMsg = "Something went wrong with google drive.";
-                this.ingamelist.Items.Add(errMsg);
-                Common.CommonTools.LogMessage(string.Format("{0} -- Error: {1}\n{2}\n\n", DateTime.Now, errMsg, ex.ToString()));
-                return;
-            }
-
-            Common.Daybreak.OutfitList outfitList = new Common.Daybreak.OutfitList();
-            try
-            {
-                outfitList = await DBCensus_Grabber.grabDataFromDaybreakCensus();
-            }
-            catch (Exception ex)
-            {
-                this.ingamelist.Items.Clear();
-                string errMsg = "Something went wrong with daybreak.";
-                this.ingamelist.Items.Add(errMsg);
-                Common.CommonTools.LogMessage(string.Format("{0} -- Error: {1}\n{2}\n\n", DateTime.Now, errMsg, ex.ToString()));
-                return;
-            }
-
-            List<string> teamspeakMembers = new List<string>();
-            try
-            {
-                teamspeakMembers = TS3_Grabber.grabDataFromTeamspeak();
-            }
-            catch (Exception ex)
-            {
-                this.ingamelist.Items.Clear();
-                string errMsg = "Something went wrong with teamspeak (are you logged in?).";
-                this.ingamelist.Items.Add(errMsg);
-                Common.CommonTools.LogMessage(string.Format("{0} -- Error: {1}\n{2}\n\n", DateTime.Now, errMsg, ex.ToString()));
-                //return;
-            }
-
-            var AODRId = Convert.ToUInt64(TSChecker.Properties.Settings.Default.AODRId);
-            var AODR = outfitList.Outfit.Where(o => o.OutfitId.Equals(AODRId)).FirstOrDefault().MembersList.Members.Where(m => m.RankOrdinal <= 4).Where(m => m.OnlineStatus != 0).Distinct();
-
-            var ingameMembers_Entry = Program.userInfo.Members.Where(m => m.Characters.Any(c => AODR.Any(a => a.CharacterId == c.CharacterId)));
-            ingameMembers_Entry = ingameMembers_Entry.Where(m => m.Characters.Any(c => !string.IsNullOrEmpty(c.CharacterName)));
-
-            var ingameMembers_NoEntry = new List<Common.Daybreak.Members>();
-            foreach (var a in AODR)
-            {
-                bool y = false;
-                foreach (var m in ingameMembers_Entry)
-                {
-                    foreach (var c in m.Characters)
-                    {
-                        if (a.CharacterId == c.CharacterId)
-                            y = true;
-                    }
-                }
-                if (!y)
-                    ingameMembers_NoEntry.Add(a);
-            }
-
-            var onlineMembers = new List<Member>();
-            if (!showOffline)
-                onlineMembers = ingameMembers_Entry.ToList();
-            else
-                onlineMembers = (from mem in Program.userInfo.Members
-                                 where !string.IsNullOrEmpty(mem.ForumName)
-                                 select mem).ToList();
-
+            var members = await XmlQuery.GetMembersWithStatus();
             ingamelist.Items.Clear();
 
-            var greens = new List<string>();
-            var reds = new List<string>();
-            var yellows = new List<string>();
-
-            foreach (var member in onlineMembers)
+            foreach (var errors in members.Item3)
+                ingamelist.Items.Add(errors, 2);
+            foreach (var offline in members.Item2)
+                ingamelist.Items.Add(offline, 0);
+            foreach (var online in members.Item1)
+                ingamelist.Items.Add(online, 1);
+            if (showOffline)
             {
-                bool match = false;
-                foreach (var teamspeakMember in teamspeakMembers)
-                {
-                    if (teamspeakMember.IndexOf("AOD_") >= 0)
-                    {
-                        var split = teamspeakMember.Split('_');
-                        var rank = !string.IsNullOrEmpty(split.ElementAtOrDefault(1)) ? split.ElementAtOrDefault(1).ToLower() : "";
-                        var name = !string.IsNullOrEmpty(split.ElementAtOrDefault(2)) ? split.ElementAtOrDefault(2).ToLower() : "";
-
-                        if (name.Contains(member.ForumName.Split('_').Last()))
-                        {
-                            match = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (match)
-                {
-                    greens.Add(member.ForumName);
-                }
-                else
-                {
-                    reds.Add(member.ForumName);
-                }
+                foreach (var roster_offline in members.Item4)
+                    ingamelist.Items.Add(roster_offline, 3);
             }
-
-            foreach (var member in ingameMembers_NoEntry)
-            {
-                yellows.Add(member.Name[0].FirstLower);
-            }
-
-            foreach (var y in yellows)
-                ingamelist.Items.Add(y, 2);
-            foreach (var r in reds)
-                ingamelist.Items.Add(r, 0);
-            foreach (var g in greens)
-                ingamelist.Items.Add(g, 1);
 
             KillTimer();
             InitTimer();
@@ -371,7 +269,7 @@ namespace TSChecker
             }
         }
 
-        private void importMembersListCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void importMembersListCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var openDialog = new OpenFileDialog();
             openDialog.Filter = "CSV Files (*.csv)|*.csv";
@@ -386,7 +284,7 @@ namespace TSChecker
                     var fileData = reader.ReadToEnd();
                     Program.userInfo = Program.userInfo.ParseCSV(fileData);
                     Common.CommonTools.SaveLocalFile(Program.userInfo);
-                    GoogleDriveTool.SaveUserInformationToDrive();
+                    await GoogleDriveTool.SaveUserInformationToDrive();
                 }
             }
         }

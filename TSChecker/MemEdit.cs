@@ -15,6 +15,7 @@ namespace TSChecker
 {
     public partial class MemEdit : Form
     {
+        private List<Common.Daybreak.Character> characters = new List<Common.Daybreak.Character>();
         private Member currentMember = new Member();
         public MemEdit(string userName)
         {
@@ -130,21 +131,7 @@ namespace TSChecker
 
         private void PopulateDropdownLists()
         {
-            this.rankDropdown.Items.Add(AODRank.Recruit);
-            this.rankDropdown.Items.Add(AODRank.Cadet);
-            this.rankDropdown.Items.Add(AODRank.Private);
-            this.rankDropdown.Items.Add(AODRank.PrivateFirstClass);
-            this.rankDropdown.Items.Add(AODRank.Specialist);
-            this.rankDropdown.Items.Add(AODRank.Trainer);
-            this.rankDropdown.Items.Add(AODRank.LanceCorporal);
-            this.rankDropdown.Items.Add(AODRank.Corporal);
-            this.rankDropdown.Items.Add(AODRank.Sergeant);
-            this.rankDropdown.Items.Add(AODRank.StaffSergeant);
-            this.rankDropdown.Items.Add(AODRank.MasterSergeant);
-            this.rankDropdown.Items.Add(AODRank.FirstSergeant);
-            this.rankDropdown.Items.Add(AODRank.CommandSergeant);
-            this.rankDropdown.Items.Add(AODRank.SergeantMajor);
-
+            this.rankDropdown.Items.AddRange(AODRank.GetRanks().ToArray());
             var divisions = TSChecker.Properties.Settings.Default.AOD_Divisions.Split(',');
             foreach (var div in divisions)
             {
@@ -175,6 +162,7 @@ namespace TSChecker
                     foreach (Character character in currentMember.Characters)
                     {
                         var charObject = (await DBCensus_Grabber.GetCharacterData(character.CharacterId)).Character.FirstOrDefault();
+                        characters.Add(charObject);
                         if (null != charObject)
                         {
                             this.charDataGridView.Rows.Add();
@@ -223,18 +211,28 @@ namespace TSChecker
         /// </summary>
         private void ReplaceMemberElement()
         {
+            currentMember = new Common.AOD.Member();
             currentMember.Characters = new List<Character>();
             currentMember.ForumName = nameTextBox.Text;
-            currentMember.Rank = rankDropdown.SelectedText;
-            currentMember.Division = divisionDropdown.SelectedText;
+            currentMember.Rank = rankDropdown.SelectedItem.ToString();
+            currentMember.Division = divisionDropdown.SelectedItem.ToString();
             currentMember.Status = "Available";
 
-            for (int rowIdx = 0; rowIdx < this.charDataGridView.Rows.Count - 1; rowIdx++)
+            foreach (var character in characters)
             {
-                var row = this.charDataGridView.Rows[rowIdx];
                 var newCharacter = new Character();
-                newCharacter.Faction = row.Cells[0].Value.ToString();
-                newCharacter.CharacterName = row.Cells[1].Value.ToString();
+                newCharacter.CharacterId = character.CharacterId;
+                newCharacter.CharacterName = character.Name.First;
+                if (character.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODRId))
+                    newCharacter.Faction = "AODR";
+                else if (character.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODCId))
+                    newCharacter.Faction = "AODC";
+                else if (character.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODSId))
+                    newCharacter.Faction = "AODS";
+                newCharacter.Rank = "Full Member";
+                newCharacter.RankOrdinal = 4;
+                newCharacter.MemberSince = character.Times.Creation;
+                newCharacter.MemberSinceDate = character.Times.CreationDate;
                 currentMember.Characters.Add(newCharacter);
             }
 
@@ -255,21 +253,25 @@ namespace TSChecker
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            UInt64 characterId;
-            addCharTextbox.Text = "";
-            bool isNumeric = UInt64.TryParse(addCharTextbox.Text, out characterId);
+            ulong characterId;
+            bool isNumeric = ulong.TryParse(addCharTextbox.Text, System.Globalization.NumberStyles.Number, null, out characterId);
             if (isNumeric)
             {
                 var charObject = (await DBCensus_Grabber.GetCharacterData(characterId)).Character.FirstOrDefault();
+                characters.Add(charObject);
                 if (null != charObject)
                 {
                     this.charDataGridView.Rows.Add();
                     var row = charDataGridView.Rows[charDataGridView.Rows.GetLastRow(DataGridViewElementStates.Visible) - 1];
-                    row.Cells[0].Value = TSChecker.Properties.Resources.terran_republic_logo_vector_by_westy543_d5xkdzh;
+                    if (charObject.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODRId))
+                        row.Cells[0].Value = TSChecker.Properties.Resources.terran_republic_logo_vector_by_westy543_d5xkdzh;
+                    else if (charObject.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODCId))
+                        row.Cells[0].Value = TSChecker.Properties.Resources.new_conglomerate_logo_vector_by_westy543_d5xfoym;
+                    else if (charObject.Outfit.OutfitId.ToString().Equals(TSChecker.Properties.Settings.Default.AODSId))
+                        row.Cells[0].Value = TSChecker.Properties.Resources.vanu_sovereignty_logo_vector_by_westy543_d5xs2hl;                
                     row.Cells[1].Value = charObject.Name.First;
                     row.Cells[2].Value = charObject.BattleRank.Value;
-                    row.Cells[3].Value = "PSU";
-                    row.Cells[3].Tag = string.Format("http://www.planetside-universe.com/character-{0}.php", charObject.CharacterId);                 
+                    row.Cells[3].Value = string.Format("http://www.planetside-universe.com/character-{0}.php", charObject.CharacterId);              
                     row.Cells[4].Value = "x";
                 }
                 else
@@ -281,6 +283,7 @@ namespace TSChecker
             {
                 MessageBox.Show("Invalid character ID, must be numeric.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            addCharTextbox.Text = "";
         }
 
         private void addCharTextbox_Enter(object sender, EventArgs e)
@@ -297,6 +300,12 @@ namespace TSChecker
             }
             else if (e.ColumnIndex == 4 && charDataGridView.Rows.Count > 1)
             {
+                var remChar = charDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                foreach (var character in characters)
+                {
+                    if (character.Name.FirstLower == remChar.ToLower())
+                        characters.Remove(character);
+                }
                 charDataGridView.Rows.RemoveAt(e.RowIndex);
             }
         }

@@ -42,7 +42,7 @@ namespace Common.Daybreak
         public MembersList MembersList { get; set; }
         //Attributes
         [XmlAttribute("outfit_id")]
-        public UInt64 OutfitId { get; set; }
+        public ulong OutfitId { get; set; }
         [XmlAttribute("name")]
         public string Name { get; set; }
         [XmlAttribute("name_lower")]
@@ -56,7 +56,7 @@ namespace Common.Daybreak
         [XmlAttribute("time_created_date")]
         public string TimeCreatedDate { get; set; }
         [XmlAttribute("leader_character_id")]
-        public UInt64 LeaderCharacterId { get; set; }
+        public ulong LeaderCharacterId { get; set; }
         [XmlAttribute("member_count")]
         public int MemberCount { get; set; }
     }
@@ -79,15 +79,15 @@ namespace Common.Daybreak
     {
         public Members()
         {
-            Name = new List<Name>();
+            Name = new Name();
         }
 
         //Elements
         [XmlElement("name")]
-        public List<Name> Name { get; set; }
+        public Name Name { get; set; }
         //Attributes
         [XmlAttribute("character_id")]
-        public UInt64 CharacterId { get; set; }
+        public ulong CharacterId { get; set; }
         [XmlAttribute("member_since")]
         public int MemberSince { get; set; }
         [XmlAttribute("member_since_date")]
@@ -97,7 +97,7 @@ namespace Common.Daybreak
         [XmlAttribute("rank_ordinal")]
         public int RankOrdinal { get; set; }
         [XmlAttribute("character_id_merged")]
-        public UInt64 CharacterIdMerged { get; set; }
+        public ulong CharacterIdMerged { get; set; }
         [XmlAttribute("member_since_merged")]
         public int MemberSinceMerged { get; set; }
         [XmlAttribute("member_since_date_merged")]
@@ -155,6 +155,7 @@ namespace Common.Daybreak
             Certs = new Certs();
             BattleRank = new BattleRank();
             DailyRibbon = new DailyRibbon();
+            Outfit = new CharacterOutfit();
         }
 
         //Elements
@@ -168,9 +169,11 @@ namespace Common.Daybreak
         public BattleRank BattleRank { get; set; }
         [XmlElement("daily_ribbon")]
         public DailyRibbon DailyRibbon { get; set; }
+        [XmlElement("outfit")]
+        public CharacterOutfit Outfit { get; set; }
         //Attributes
         [XmlAttribute("character_id")]
-        public UInt64 CharacterId { get; set; }
+        public ulong CharacterId { get; set; }
         [XmlAttribute("faction_id")]
         public int FactionId { get; set; }
         [XmlAttribute("head_id")]
@@ -179,6 +182,34 @@ namespace Common.Daybreak
         public int TitleId { get; set; }
         [XmlAttribute("profile_id")]
         public int ProfileId { get; set; }
+    }
+
+    [XmlRoot("outfit")]
+    public class CharacterOutfit
+    {
+        //Attributes
+        [XmlAttribute("outfit_id")]
+        public ulong OutfitId { get; set; }
+        [XmlAttribute("member_since_date")]
+        public string MemberSinceData { get; set; }
+        [XmlAttribute("outfit_id_merged")]
+        public ulong OutfitIdMerged { get; set; }
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+        [XmlAttribute("name_lower")]
+        public string NameLower { get; set; }
+        [XmlAttribute("alias")]
+        public string Alias { get; set; }
+        [XmlAttribute("alias_lower")]
+        public string AliasLower { get; set; }
+        [XmlAttribute("time_created")]
+        public int TimeCreated { get; set; }
+        [XmlAttribute("time_created_date")]
+        public string TimeCreatedDate { get; set; }
+        [XmlAttribute("leader_character_id")]
+        public ulong LeaderCharacterId { get; set; }
+        [XmlAttribute("member_count")]
+        public int MemberCount { get; set; }
     }
 
     [XmlRoot("times")]

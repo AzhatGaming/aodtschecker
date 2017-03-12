@@ -43,6 +43,55 @@ namespace Common.AOD
         {
             return RankAbbreviation;
         }
+
+        /// <summary>
+        /// Gets the list of ranks.
+        /// </summary>
+        /// <returns>List of ranks.</returns>
+        public static List<string> GetRanks()
+        {
+            var ranks = new List<string>();
+            foreach (var rank in GetRankObjects())
+            {
+                ranks.Add(rank.ToString());
+            }
+            return ranks;
+        }
+
+        /// <summary>
+        /// Gets the abbreviation of a rank from the full rank string.
+        /// </summary>
+        /// <returns>Rank abbreviation.</returns>
+        public static string GetAbbrvRank(string fullRank)
+        {
+            foreach (var rank in GetRankObjects())
+            {
+                if (fullRank.ToLower() == rank.ToString().ToLower())
+                {
+                    return rank.ToAbbreviatedString();
+                }
+            }
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Grabs a list of all declared rank objects.
+        /// </summary>
+        /// <returns>All declared rank objects.</returns>
+        private static List<AODRank> GetRankObjects()
+        {
+            var ranks = new List<AODRank>();
+            var rankObjs = typeof(AODRank).GetMembers();
+            foreach (var obj in rankObjs)
+            {
+                if (obj.MemberType == System.Reflection.MemberTypes.Field)
+                {
+                    var fieldInfo = (System.Reflection.FieldInfo)obj;
+                    ranks.Add((AODRank)fieldInfo.GetValue(obj));
+                }
+            }
+            return ranks;
+        }
     }
 
     [XmlRoot("members")]
@@ -183,7 +232,7 @@ namespace Common.AOD
         [XmlAttribute("charactername")]
         public string CharacterName { get; set; }
         [XmlAttribute("character_id")]
-        public UInt64 CharacterId { get; set; }
+        public ulong CharacterId { get; set; }
         [XmlAttribute("member_since")]
         public int MemberSince { get; set; }
         [XmlAttribute("member_since_date")]

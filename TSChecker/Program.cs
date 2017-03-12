@@ -46,7 +46,7 @@ namespace TSChecker
             //            bool valid = false;
             //            try
             //            {
-            //                Convert.ToUInt64(vals[7]);
+            //                Convert.Toulong(vals[7]);
             //                valid = true;
             //            }
             //            catch
@@ -60,12 +60,12 @@ namespace TSChecker
             //                if (userInfo.Members.Any(m => m.ForumName == WebUtility.HtmlEncode(vals[0])))
             //                {
             //                    mem = userInfo.Members.Where(m => m.ForumName == WebUtility.HtmlEncode(vals[0])).FirstOrDefault();
-            //                    if (!mem.Characters.Any(c => c.CharacterId == Convert.ToUInt64(vals[7])))
+            //                    if (!mem.Characters.Any(c => c.CharacterId == Convert.Toulong(vals[7])))
             //                    {
             //                        var newChar = new Common.AOD.Character();
             //                        newChar.CharacterName = WebUtility.HtmlEncode(vals[12].Replace(" ", "&nbsp;"));
             //                        newChar.Faction = "AODR";
-            //                        newChar.CharacterId = Convert.ToUInt64(vals[7]);
+            //                        newChar.CharacterId = Convert.Toulong(vals[7]);
             //                        newChar.MemberSince = Convert.ToInt32(vals[8]);
             //                        newChar.MemberSinceDate = WebUtility.HtmlEncode(vals[9]);
             //                        newChar.Rank = WebUtility.HtmlEncode(vals[10]);
@@ -84,7 +84,7 @@ namespace TSChecker
             //                    var newChar = new Common.AOD.Character();
             //                    newChar.CharacterName = WebUtility.HtmlEncode(vals[12].Replace(" ", "&nbsp;"));
             //                    newChar.Faction = "AODR";
-            //                    newChar.CharacterId = Convert.ToUInt64(vals[7]);
+            //                    newChar.CharacterId = Convert.Toulong(vals[7]);
             //                    newChar.MemberSince = Convert.ToInt32(vals[8]);
             //                    newChar.MemberSinceDate = WebUtility.HtmlEncode(vals[9]);
             //                    newChar.Rank = WebUtility.HtmlEncode(vals[10]);

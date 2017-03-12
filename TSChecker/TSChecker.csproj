@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -137,6 +137,7 @@
     <Compile Include="TelnetInterface.cs" />
     <Compile Include="TS3_Grabber.cs" />
     <Compile Include="XmlGrabber.cs" />
+    <Compile Include="XmlQuery.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\offline_roster.png" />
     <None Include="Resources\vanu_sovereignty_logo_vector_by_westy543-d5xs2hl.png" />
     <None Include="Resources\terran_republic_logo_vector_by_westy543-d5xkdzh.png" />
     <None Include="Resources\new_conglomerate_logo_vector_by_westy543-d5xfoym.png" />

@@ -7,7 +7,7 @@ namespace TSChecker
 {
     static class DBCensus_Grabber
     {
-        public static async Task<OutfitList> grabDataFromDaybreakCensus()
+        public static async Task<OutfitList> grabDataFromDaybreakCensus(string outfitId)
         {
             var censusObject = new OutfitList();
 
@@ -19,7 +19,7 @@ namespace TSChecker
                     Properties.Settings.Default.DaybreakResponseFormat, 
                     Properties.Settings.Default.DaybreakPlanetsideQuery, 
                     requestItem, 
-                    Properties.Settings.Default.AODRId, 
+                    outfitId, 
                     queryObjs);
 
             string xmlResponse;
@@ -32,18 +32,20 @@ namespace TSChecker
             return censusObject;
         }
 
-        public static async Task<CharacterList> GetCharacterData(UInt64 characterId)
+        public static async Task<CharacterList> GetCharacterData(ulong characterId)
         {
             var censusObject = new CharacterList();
 
             const string requestItem = "character";
+            const string queryObjs = "outfit";
 
-            var urlString = string.Format("https://{0}/{1}/get/{2}/{3}/{4}",
+            var urlString = string.Format("https://{0}/{1}/get/{2}/{3}/{4}/?c:resolve={5}",
                     Properties.Settings.Default.DaybreakURL,
                     Properties.Settings.Default.DaybreakResponseFormat,
                     Properties.Settings.Default.DaybreakPlanetsideQuery,
                     requestItem,
-                    characterId.ToString());
+                    characterId.ToString(),
+                    queryObjs);
 
             string xmlResponse;
             using (var client = new WebClient())
